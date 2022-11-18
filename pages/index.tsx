@@ -2,7 +2,6 @@ import Head from "next/head"
 //import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import { GreetingSection } from "../ui/components/GreetingSection"
-import { ImageSection } from "../ui/components/ImageSection"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -17,8 +16,6 @@ export default function Home() {
         <meta name="og:title" content={articleTitle} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GreetingSection />
-      <ImageSection />
       <Link href="/article/:id">
         <button>To Article</button>
       </Link>
