@@ -47,7 +47,7 @@ next-env.d.ts
 
 # dfx temporary files
 .dfx/
-canister_ids.json
+#canister_ids.json
 
 # frontend code
 node_modules/

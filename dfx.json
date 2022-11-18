@@ -3,9 +3,6 @@
     "hello": {
       "main": "backend/service/Hello.mo"
     },
-    "image": {
-      "main": "backend/service/Image.mo"
-    },
     "hello_assets": {
       "dependencies": ["hello"],
       "source": ["out"],
