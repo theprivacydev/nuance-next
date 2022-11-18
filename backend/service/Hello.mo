@@ -24,31 +24,64 @@ actor hello {
   func isEq(x : Text, y : Text) : Bool { x == y };
   var maxHashmapSize = 1000000;
   var hashMap = HashMap.HashMap<Text, [Text]>(maxHashmapSize, isEq, Text.hash);
-  stable var nameKey : Nat = 0;
   stable var nameEntries : [(Text, Text)] = [];
+  stable var imgUrlEntries : [(Text, Text)] = [];
   var nameHashMap = HashMap.fromIter<Text, Text>(nameEntries.vals(), maxHashmapSize, isEq, Text.hash);
+  var imgUrlHashMap = HashMap.fromIter<Text, Text>(nameEntries.vals(), maxHashmapSize, isEq, Text.hash);
 
-  public func addName(name : Text) : async () {
-    nameKey := nameKey + 1;
-    let key = Nat.toText(nameKey);
-    nameHashMap.put((key, name))
+  system func preupgrade() {
+    nameEntries := Iter.toArray(nameHashMap.entries());
+    imgUrlEntries := Iter.toArray(imgUrlHashMap.entries())
   };
 
-  public func greet(name : Text) : async ({ #ok : Text }) {
-
-    let storename = addName(name);
-    await storename;
-
-    return #ok("Hello, " # name # "!");
-
+  system func postupgrade() {
+    nameEntries := [];
+    imgUrlEntries := []
   };
 
-  public func getName(key : Text) : async ({ #ok : Text }) {
-    let name = nameHashMap.get(key);
-    switch name {
-      case null { return #ok("No name found") };
-      case (?name) { return #ok(name) }
+  func safeGet<K, V>(hashMap : HashMap.HashMap<K, V>, key : K, defaultValue : V) : V {
+    switch (hashMap.get(key)) {
+      case null defaultValue;
+      case (?value) value
     }
   };
 
+  stable var nameKey : Nat = 0;
+
+  public func getNameKey() : async Nat {
+    return nameKey
+  };
+
+  public func resetNameKey() : async () {
+    nameKey := 0
+  };
+
+  type metaTag = {
+    name : ?Text;
+    imgUrl : ?Text
+  };
+
+  public func addMetaTag(name : Text, imgUrl : Text) : async ({ #ok : Text }) {
+    let key = Nat.toText(nameKey);
+    let addName = nameHashMap.put(key, name);
+    let addImgUrl = imgUrlHashMap.put(key, imgUrl);
+
+    addName;
+    addImgUrl;
+    nameKey += 1;
+
+    return #ok("added")
+  };
+
+  public func getMetaTag(key : Text) : async (metaTag) {
+
+    let name = safeGet(nameHashMap, key, "");
+    let imgUrl = safeGet(imgUrlHashMap, key, "");
+
+    return ({
+      name = ?name;
+      imgUrl = ?imgUrl
+    })
+
+  }
 }
