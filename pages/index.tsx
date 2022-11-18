@@ -17,8 +17,8 @@ export default function Home() {
         <meta name="og:title" content={articleTitle} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GreetingSection />
-      <ImageSection />
+      {/* <GreetingSection /> */}
+      {/* <ImageSection /> */}
       <Link href="/article/:id">
         <button>To Article</button>
       </Link>
