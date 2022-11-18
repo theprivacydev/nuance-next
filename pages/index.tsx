@@ -28,7 +28,7 @@ export default function Home() {
           the first Decentralized Blogging Dapp: Nuance!
         </p>
 
-        <Link href="/article/:id">
+        <Link href="/article/7">
           <Button variant="primary">To Article</Button>
         </Link>
 
