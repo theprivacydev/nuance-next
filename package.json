@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +15,17 @@
     "next": "13.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.3"
+    "typescript": "4.9.3",
+
+    "@dfinity/agent": "^0.11",
+    "@dfinity/candid": "^0.11",
+    "@dfinity/principal": "^0.11",
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "compressorjs": "^1.1.1",
+    "events": "^3.3.0",
+    "react-dropzone": "^11.5.1",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.4"
   }
 }
