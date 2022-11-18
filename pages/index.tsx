@@ -17,9 +17,6 @@ export default function Home() {
         <meta name="og:title" content={articleTitle} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Link href="/article/:id">
-        <button>To Article</button>
-      </Link>
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Nuance-Next!</h1>
 
