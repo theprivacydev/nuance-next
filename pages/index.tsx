@@ -45,8 +45,8 @@ export default function Home() {
           the first Decentralized Blogging Dapp: Nuance!
         </p>
 
-        <Link href={`/article/${7}`}>
-          <Button onClick={() => router.push(`/article/${7}`)} variant="primary">
+        <Link href={`/article/7`}>
+          <Button onClick={() => router.push(`/article/7`)} variant="primary">
             To Article
           </Button>
         </Link>
