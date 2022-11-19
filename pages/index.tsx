@@ -46,7 +46,9 @@ export default function Home() {
         </p>
 
         <Link href="/article/7">
-          <Button variant="primary">To Article</Button>
+          <Button onClick={() => router.push("/article/7")} variant="primary">
+            To Article
+          </Button>
         </Link>
 
         <div className={styles.grid}>
