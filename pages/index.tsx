@@ -6,8 +6,8 @@ import Link from "next/link"
 import { useState } from "react"
 import { Button } from "react-bootstrap"
 // import logo from "../images/nuance-flag.png";
-import logo from "../images/nuance-logo.svg"
-import { useRouter } from "next/router"
+// import logo from "../images/nuance-logo.svg"
+// import { useRouter } from "next/router"
 
 export default function Home() {
   const [articleTitle, setArticleTitle] = useState("First Article")
@@ -15,10 +15,10 @@ export default function Home() {
     "This is the first article on Nuance-next"
   )
 
-  const router = useRouter()
-  const { id } = router.query
+  // const router = useRouter()
+  // const { id } = router.query
 
-  console.log(id)
+  // console.log(id)
 
   return (
     <div className={styles.container}>
@@ -46,7 +46,10 @@ export default function Home() {
         </p>
 
         <Link href={`/article/7`}>
-          <Button onClick={() => router.push(`/article/7`)} variant="primary">
+          <Button
+            // onClick={() => router.push(`/article/7`)}
+            variant="primary"
+          >
             To Article
           </Button>
         </Link>
