@@ -35,4 +35,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 * https://qwt6n-5yaaa-aaaao-aaa4a-cai.ic0.app/
 
-Designed to be deployed on the IC
+Designed to be deployed on the IC Blockchain.
